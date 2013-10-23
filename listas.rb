@@ -13,10 +13,17 @@ class Franquia
 	end
 
 	def mostra
-		for restaurante in @restaurantes
-			puts restaurante.nome
+		@restaurantes.each do |r|
+			puts r.nome
 		end
 	end
+
+	def relatorio
+		@restaurantes.each do |r|
+			yield r
+		end
+	end
+
 end
 
 class Restaurante
@@ -39,3 +46,30 @@ franquia.adiciona restaurante_um, restaurante_dois
 franquia.mostra
 
 restaurante_um.fechar_conta :valor => 50, :nota => 9, :comentario => "Gostei!"
+
+franquia.relatorio do |r|
+	puts "Restaurante cadastrado: #{r.nome}"
+end
+
+class Turma
+
+	def initialize(*nomes)
+		@nomes = []
+		for nome in nomes
+			@nomes << nome
+		end
+	end
+
+	def each
+		@nomes.each do |nome|
+			yield nome
+		end
+	end
+
+end
+
+fj91 = Turma.new("Guilherme", "Paulo", "Paniz")
+
+fj91.each do |nome|
+	puts nome
+end
