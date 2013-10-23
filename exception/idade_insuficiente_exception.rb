@@ -1,0 +1,2 @@
+class IdadeInsuficienteException < Exception
+end
