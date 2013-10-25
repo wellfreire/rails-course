@@ -1,3 +1,3 @@
 class Restaurante < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :nome, :endereco, :especialidade
 end
