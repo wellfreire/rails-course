@@ -14,13 +14,15 @@ class RestaurantesController < ApplicationController
 
   def create
   	# rails #3
-    restaurante = Restaurante.new params[:restaurante]
+    @restaurante = Restaurante.new params[:restaurante]
     # rails #4
     # restaurante = Restaurante.new params.require(:restaurante).permit(:nome, :endereco, :especialidade)
     # params.require(:restaurante).permit! # unlock all
-    restaurante.save
-
-    redirect_to action: "show", id: restaurante
+    if @restaurante.save
+	    redirect_to action: "show", id: @restaurante
+    else
+    	render action: "new"
+  	end
   end
 
   def edit
