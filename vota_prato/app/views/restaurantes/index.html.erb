@@ -5,8 +5,7 @@
 		<th>Nome</th>
 		<th>Endereço</th>
 		<th>Especialidade</th>
-		<th></th>
-		<th></th>
+		<th colspan="3" style="text-align: center;">Ações</th>
 	</tr>
 
 	<% @restaurantes.each do |r| %>
@@ -16,6 +15,9 @@
 			<td><%= r.especialidade %></td>
 			<td>
 				<%= link_to 'Mostrar', action: 'show', id: r %>
+			</td>
+			<td>
+				<%= link_to 'Editar', action: 'edit', id: r %>
 			</td>
 			<td>
 				<%= link_to 'Excluir', {action: 'destroy', id: r}, {method: 'delete'} %>
