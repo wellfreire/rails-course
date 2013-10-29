@@ -30,10 +30,4 @@ class RestaurantesController < ApplicationController
 		redirect_to action: 'index'
 	end
 
-	private
-
-		def restaurante_params
-			
-		end
-
 end
