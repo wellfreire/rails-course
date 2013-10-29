@@ -7,6 +7,17 @@ class RestaurantesController < ApplicationController
 		@restaurante = Restaurante.find params[:id]
 	end
 
+	def new
+		@restaurante = Restaurante.new
+	end
+
+  def create
+    restaurante = Restaurante.new params[:restaurante]
+    restaurante.save
+
+    redirect_to action: "index"
+  end
+
 	def destroy
 		@restaurante = Restaurante.find params[:id]
 		@restaurante.destroy
