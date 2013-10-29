@@ -15,7 +15,7 @@ class RestaurantesController < ApplicationController
     restaurante = Restaurante.new params[:restaurante]
     restaurante.save
 
-    redirect_to action: "index"
+    redirect_to action: "show", id: restaurante
   end
 
 	def destroy
