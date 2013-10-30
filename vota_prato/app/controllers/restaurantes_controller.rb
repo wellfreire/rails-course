@@ -12,7 +12,12 @@ class RestaurantesController < ApplicationController
 		end
 	end
 
-	def show		
+	def show
+		respond_to do |format|		
+			format.html
+			format.xml {render xml: @restaurante}
+			format.json {render json: @restaurante}
+		end
 	end
 
 	def new
