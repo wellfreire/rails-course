@@ -28,6 +28,14 @@ class QualificacoesController < ApplicationController
 
     preparar_form
 
+    if params[:cliente]
+      @qualificacao.cliente = Cliente.find(params[:cliente])
+    end
+
+    if params[:restaurante]
+      @qualificacao.restaurante = Restaurante.find(params[:restaurante])
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @qualificacao }
