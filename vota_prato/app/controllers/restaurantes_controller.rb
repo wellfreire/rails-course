@@ -1,23 +1,26 @@
 class RestaurantesController < ApplicationController
 	before_filter :set_restaurante, only: [:edit, :update, :show, :destroy]
+	respond_to :html, :json, :xml
 
 	def index
 		# @restaurantes = Restaurante.teste("pf").order :nome
 		@restaurantes = Restaurante.order :nome
 
-		respond_to do |format|		
-			format.html
-			format.xml {render xml: @restaurantes}
-			format.json {render json: @restaurantes}
-		end
+		# respond_to do |format|		
+		# 	format.html
+		# 	format.xml {render xml: @restaurantes}
+		# 	format.json {render json: @restaurantes}
+		# end
+		respond_with @restaurantes
 	end
 
 	def show
-		respond_to do |format|		
-			format.html
-			format.xml {render xml: @restaurante}
-			format.json {render json: @restaurante}
-		end
+		# respond_to do |format|		
+		# 	format.html
+		# 	format.xml {render xml: @restaurante}
+		# 	format.json {render json: @restaurante}
+		# end
+		respond_with @restaurante
 	end
 
 	def new
