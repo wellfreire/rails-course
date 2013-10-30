@@ -1,4 +1,6 @@
 class RestaurantesController < ApplicationController
+	before_filter :set_restaurante, only: [:edit, :update, :show, :destroy]
+
 	def index
 		# @restaurantes = Restaurante.teste("pf").order :nome
 		@restaurantes = Restaurante.order :nome
@@ -10,8 +12,7 @@ class RestaurantesController < ApplicationController
 		end
 	end
 
-	def show
-		@restaurante = Restaurante.find params[:id]
+	def show		
 	end
 
 	def new
@@ -32,11 +33,9 @@ class RestaurantesController < ApplicationController
   end
 
   def edit
-  	@restaurante = Restaurante.find params[:id]
 	end
 
 	def update
-		@restaurante = Restaurante.find params[:id]
 		if @restaurante.update_attributes params[:restaurante]
 			redirect_to action: "show", id: @restaurante
 		else
@@ -45,10 +44,13 @@ class RestaurantesController < ApplicationController
 	end
 
 	def destroy
-		@restaurante = Restaurante.find params[:id]
 		@restaurante.destroy
 
 		redirect_to action: 'index'
 	end
 
+	private
+		def set_restaurante
+			@restaurante = Restaurante.find params[:id]
+		end
 end
