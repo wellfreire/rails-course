@@ -21,7 +21,7 @@ class RestaurantesController < ApplicationController
     if @restaurante.save
 	    redirect_to action: "show", id: @restaurante
     else
-    	render action: "new"
+    	render "new"
   	end
   end
 
@@ -30,10 +30,12 @@ class RestaurantesController < ApplicationController
 	end
 
 	def update
-		restaurante = Restaurante.find params[:id]
-		restaurante.update_attributes params[:restaurante]
-
-		redirect_to action: "show", id: restaurante
+		@restaurante = Restaurante.find params[:id]
+		if @restaurante.update_attributes params[:restaurante]
+			redirect_to action: "show", id: @restaurante
+		else
+			render "edit"
+		end
 	end
 
 	def destroy

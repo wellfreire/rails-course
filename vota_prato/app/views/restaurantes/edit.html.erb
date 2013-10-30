@@ -9,4 +9,14 @@
 <% end %>
 
 <br/>
+
+<% if @restaurante.errors.any? %>
+<ul>
+	<% @restaurante.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+</ul>
+<% end %>
+
+<br/>
 <%= link_to "< Lista de Restaurantes", action: 'index' %>
