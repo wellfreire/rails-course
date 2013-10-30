@@ -25,8 +25,9 @@ class QualificacoesController < ApplicationController
   # GET /qualificacoes/new.json
   def new
     @qualificacao = Qualificacao.new
-    @restaurantes = Restaurante.all
-    
+
+    preparar_form
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @qualificacao }
@@ -36,6 +37,8 @@ class QualificacoesController < ApplicationController
   # GET /qualificacoes/1/edit
   def edit
     @qualificacao = Qualificacao.find(params[:id])
+
+    preparar_form
   end
 
   # POST /qualificacoes
@@ -48,6 +51,7 @@ class QualificacoesController < ApplicationController
         format.html { redirect_to @qualificacao, notice: 'Qualificacao was successfully created.' }
         format.json { render json: @qualificacao, status: :created, location: @qualificacao }
       else
+        preparar_form
         format.html { render action: "new" }
         format.json { render json: @qualificacao.errors, status: :unprocessable_entity }
       end
@@ -64,6 +68,7 @@ class QualificacoesController < ApplicationController
         format.html { redirect_to @qualificacao, notice: 'Qualificacao was successfully updated.' }
         format.json { head :no_content }
       else
+        preparar_form
         format.html { render action: "edit" }
         format.json { render json: @qualificacao.errors, status: :unprocessable_entity }
       end
@@ -81,4 +86,10 @@ class QualificacoesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def preparar_form
+      @clientes = Cliente.order(:nome).all
+      @restaurantes = Restaurante.order :nome
+    end
 end

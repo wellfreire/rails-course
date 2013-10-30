@@ -7,8 +7,7 @@ class Qualificacao < ActiveRecord::Base
   validates_presence_of :valor_gasto, message: " - deve ser preenchido"
   validates_presence_of :cliente_id, :restaurante_id
   validates_associated :cliente, :restaurante
-  validates_presence_of :prato_id
-  validates_associated :prato
+
   validates_numericality_of :nota,
   							greater_than_or_equal_to: 0,
   							less_than_or_equal_to: 10,
