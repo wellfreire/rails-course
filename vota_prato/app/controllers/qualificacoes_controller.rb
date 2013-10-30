@@ -25,7 +25,8 @@ class QualificacoesController < ApplicationController
   # GET /qualificacoes/new.json
   def new
     @qualificacao = Qualificacao.new
-
+    @restaurantes = Restaurante.all
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @qualificacao }
