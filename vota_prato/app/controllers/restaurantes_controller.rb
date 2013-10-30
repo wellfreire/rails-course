@@ -2,6 +2,12 @@ class RestaurantesController < ApplicationController
 	def index
 		# @restaurantes = Restaurante.teste("pf").order :nome
 		@restaurantes = Restaurante.order :nome
+
+		respond_to do |format|		
+			format.html
+			format.xml {render xml: @restaurantes}
+			format.json {render json: @restaurantes}
+		end
 	end
 
 	def show
