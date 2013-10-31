@@ -8,10 +8,12 @@
 </head>
 <body>
 
-<%= yield %>
+	<%= menu_principal %w[clientes qualificacoes restaurantes] %>
 
-<br />
-<%= link_to "Inicio", controller: "inicio" %>
+	<%= yield %>
+
+	<br />
+	<%= link_to "Inicio", controller: "inicio" %>
 
 </body>
 </html>

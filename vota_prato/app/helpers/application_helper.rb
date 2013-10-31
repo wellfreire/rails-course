@@ -12,4 +12,14 @@ module ApplicationHelper
 						locals: {comentavel: comentavel}
 	end
 
+	def comentarios(comentavel)
+		# render partial: "comentarios/comentarios",
+						# locals: {comentarios: comentavel.comentarios}
+		render comentavel.comentarios
+	end
+
+	def menu_principal(controllers)
+		render partial: "menu_principal", locals: {opcoes: controllers}
+	end
+
 end
