@@ -1,6 +1,8 @@
 VotaPrato::Application.routes.draw do
-  resources :comentarios
 
+  get '/(inicio)' => 'inicio#index'
+
+  resources :comentarios
 
   resources :qualificacoes
 
