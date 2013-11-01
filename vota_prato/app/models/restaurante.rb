@@ -1,7 +1,7 @@
 #encoding: UTF-8
 
 class Restaurante < ActiveRecord::Base
-  attr_accessible :nome, :endereco, :especialidade
+  attr_accessible :nome, :endereco, :especialidade, :foto
 
   validates_presence_of :nome, message: "deve ser preenchido"
   validates_presence_of :endereco, message: "deve ser preenchido"
@@ -16,6 +16,8 @@ class Restaurante < ActiveRecord::Base
   has_and_belongs_to_many :pratos
 
   has_many :comentarios, as: :comentavel
+
+  has_attached_file :foto, styles: {medium: "300x300>", thumb: "100x100>"}
 
   # scope :teste, lambda {|espec| where("especialidade LIKE ?", "%#{espec}%")}
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131031001058) do
+ActiveRecord::Schema.define(:version => 20131101221119) do
 
   create_table "clientes", :force => true do |t|
     t.string   "nome",       :limit => 80
@@ -62,11 +62,15 @@ ActiveRecord::Schema.define(:version => 20131031001058) do
   end
 
   create_table "restaurantes", :force => true do |t|
-    t.string   "nome",          :limit => 80
+    t.string   "nome",              :limit => 80
     t.string   "endereco"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.string   "especialidade", :limit => 40
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "especialidade",     :limit => 40
+    t.string   "foto_file_name"
+    t.string   "foto_content_type"
+    t.integer  "foto_file_size"
+    t.datetime "foto_updated_at"
   end
 
 end
