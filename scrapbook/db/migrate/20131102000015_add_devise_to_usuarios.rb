@@ -1,6 +1,6 @@
 class AddDeviseToUsuarios < ActiveRecord::Migration
   def self.up
-    change_table(:usuarios) do |t|
+    create_table(:usuarios) do |t|
       t.string :nome, limit: 80
 
       ## Database authenticatable

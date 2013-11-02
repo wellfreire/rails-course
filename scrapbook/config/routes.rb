@@ -1,5 +1,9 @@
 Scrapbook::Application.routes.draw do
-  devise_for :usuarios
+  devise_for :usuarios, controllers: {omniauth.callbacks: "usuarios/omniauth_callbacks"}
+
+  # resources :usuarios
+  # resources :fotos
+  # resources :albuns
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
